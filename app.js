@@ -1,53 +1,33 @@
-//selecting dom elements for manipulation
-var input = document.querySelector("input[type = 'text']");
-var ul = document.querySelector("ul");
-var container = document.querySelector("div");
-var lists = document.querySelectorAll("li");
-var spans = document.getElementsByTagName("span");
-var clearBtn = document.querySelector(".clear");
-var add = document.querySelector("add");
-
-
-//function to delete todo if delete span is clicked.
-function deleteTodo(){
-  for(let span of spans){
-    span.addEventListener ("click",function (){
-      span.parentElement.remove();
-      event.stopPropagation();
-    });
-  }
+// Create a close button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
 }
 
-//event listener for input to add new todo to the list.
-input.addEventListener("click",function(add){
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+  var span = document.createElement("SPAN");
   
-    //creating lists and span when enter is clicked
-    var li = document.createElement("li");
-    var spanElement = document.createElement("span");
-    var icon = document.createElement("i");
-        
-    var newTodo = this.value;
-    this.value = " " ;
-        
-    icon.classList.add('fas', 'fa-trash-alt');
-    spanElement.append(icon);
-    ul.appendChild(li).append(spanElement,newTodo);
+  span.appendChild(txt);
+  li.appendChild(span);
 
-    deleteTodo();
-    
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
     }
-    
-);
-
-//clear all todo when clear button is clicked
-clearBtn.addEventListener('click', function(){
-  ul.innerHTML= "";
-  localStorage.removeItem('todoList',ul.innerHTML );
-});
-
-
-//delete todo
-deleteTodo();
-
-//load Todo
-loadTodo();
+  }
+}
