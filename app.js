@@ -1,10 +1,11 @@
 function newElement() {
-    let li = document.createElement("li");
-    let inputValue = document.getElementById("myInput").value;
-    let aggy = document.createTextNode(inputValue);
+    const li = document.createElement("li");
+    const inputValue = document.getElementById("myInput").value;
+    const text = document.createTextNode(inputValue);
    li.appendChild(aggy);
     {
       document.getElementById("myUL").appendChild(li);
     }
-    document.getElementById("myInput").value = "";}
+    document.getElementById("myInput").value = "";
+  }
 
